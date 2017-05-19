@@ -3,11 +3,32 @@
   "version": "1.0.0",
   "private": true,
   "description": "web processing for unity app",
-  "main": "index.js",
-  "dependencies": {
-    "express": "^4.15.2",
-    "express-handlebars": "^3.0.0"
+  "engines": {
+    "node": "6.10.2"
   },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.2",
+    "formidable": "^1.1.1",
+    "fs": "0.0.1-security",
+    "mongodb": "2.2.26",
+    "morgan": "~1.6.1",
+    "mongoose": "~4.9.10",
+    "bluebird": "~3.5.0",
+    "nodemailer": "~4.0.1",
+    "mongo-sanitize": "~1.0.0",
+    "config.json": "0.0.4",
+    "sendgrid": "5.1.0",
+    "hogan.js": "3.0.2",
+    "xoauth2": "1.2.0"
+  },
+  
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

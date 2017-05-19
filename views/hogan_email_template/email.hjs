@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Rise and shout this email worked {{name}}</h1>
+<body>
+</html>
+
