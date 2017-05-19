@@ -10,7 +10,7 @@ var xoauth2 = require('xoauth2');
 
 var mongoose = require('mongoose');
   mongoose.promise = require('bluebird');
-  mongoose.connect('mongodb://localhost:27017/unityService');
+  mongoose.connect('mongodb://nephtc:Kjasgh667!@ds149221.mlab.com:49221/reports');
 
 var ansKey = JSON.parse(fs.readFileSync("./answerKey.json"));
 
