@@ -1,5 +1,6 @@
-#ignor packages installed by npm
+#ignore packages installed by npm
 node_modules
 *~
 .DS_Store
 config.json
+.env

@@ -10,7 +10,7 @@ var xoauth2 = require('xoauth2');
 
 var mongoose = require('mongoose');
   mongoose.promise = require('bluebird');
-  mongoose.connect('mongodb://unityApp:Factorial!!1!@ds149221.mlab.com:49221/reports');
+  mongoose.connect('mongodb://' + process.env.MLAB_USER + ':' + process.env.MLAB_PASS + '@ds149221.mlab.com:49221/reports');
 
 var ansKey = JSON.parse(fs.readFileSync("./answerKey.json"));
 
@@ -27,15 +27,15 @@ var transporter = nodemailer.createTransport({
   auth: {
     type: 'Oauth2',
     user: 'nephtc.noreply@gmail.com',
-    clientId: '552629857675-6f4b8ev8h821n0svptphiv6cgkajk5cf.apps.googleusercontent.com',
-    clientSecret: 'cduIgQArAd_kCT04jP-JiS8l',
-    refreshToken: '1/MrdgjDWxnlXNZ-Ckgwv5eLi23FuKQswUXETooASjlgY',
-    accessToken: 'ya29.GltPBPzFoEeczyHcY_vU6zp1bjKtbxZ84AsWwABE1D8Np05U-vi5HMOj8_KcW_3nTeZX4o8KdqJdhkWebA5cHggydyDI4FF89onLhoDG-06A5agrrbC_KK2sb6o7'
+    clientId: process.env.GMAIL_CLIENT_ID,
+    clientSecret: process.env.GMAIL_SECRET,
+    refreshToken: process.env.GMAIL_RFRSH_TOKEN,
+    accessToken: process.env.GMAIL_ACCESS_TOKEN
   }
 });
 
 var mailOptions = {
-  from:'New England Public Health Training Center',
+  from:'New England Public Health Training Center <nephtc.noreply@gmail.com>',
   to: '',
   subject: 'Your Inspection Test Results',
   html: compiledTemplate.render({answers: ansKey.inspReportJsonList, usrAns: ansKey.inspReportJsonList})
@@ -57,17 +57,16 @@ router.post('/reports', function(req, res) {
     if (err) {
       res.send(err);
     } else {
-      mailOptions.to = report.email;
-      mailOptions.html = compiledTemplate.render({name: "Jake"});
+      // mailOptions.to = report.email;
       // mailOptions.html = compiledTemplate.render({answers: ansKey.inspReportJsonList, usrAns: report.inspectionList});
-      transporter.sendMail(mailOptions, function(err, res){
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Email Sent to " + mailOptions.to);
-        }      
-      });
-      res.json({message: "report recived"});
+      // transporter.sendMail(mailOptions, function(err, res){
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     console.log(res);
+      //   }      
+      // });
+      res.sendStatus(200);
     }
   });
 });
