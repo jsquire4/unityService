@@ -42,7 +42,7 @@ var mailOptions = {
 };  
 
 router.get('/', function(req, res) {
-  res.json({message: "this is not url you are looking for, move along"});
+  res.render('../views/email', {answers: ansKey.inspReportJsonList, usrAns: "user answers here"});
 });
 
 router.get('/preview', function(req, res) {
