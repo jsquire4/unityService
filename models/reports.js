@@ -4,8 +4,6 @@ mongoose.promise = require('bluebird');
 
 var ReportSchema = new Schema({
   postData: String
-  // inspectionList: String,
-  // email: String
 });
 
 module.exports = mongoose.model('Report', ReportSchema);
