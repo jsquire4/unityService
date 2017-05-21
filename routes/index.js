@@ -51,30 +51,33 @@ router.get('/preview', function(req, res) {
 
 router.post('/reports', function(req, res) {
 
-  var report = req.body;
-  console.log(report);
-  // var report = new Report();
-  // report.formData = req.body.formData.json;
-  // console.log(report.postData);
+  var stillData = req.body.json;
+  console.log(stillData);
+
+  var report = new Report();
+  report.formData = req.body.json;
+  console.log(report.postData);
+
   // report.inspectionList = sanitize(req.body.inspReportJsonList);
   // report.email = sanitize(req.body.emailAddress);
-  // report.save(function(err) {
-  //   if (err) {
-  //     res.send(err);
-  //   } else {
-  //     // mailOptions.to = report.email;
-  //     // mailOptions.html = compiledTemplate.render({answers: ansKey.inspReportJsonList, usrAns: report.inspectionList});
-  //     // transporter.sendMail(mailOptions, function(err, res){
-  //     //   if (err) {
-  //     //     console.log(err);
-  //     //   } else {
-  //     //     console.log(res);
-  //     //   }      
-  //     // });
-  //     res.sendStatus(200);
-  //   }
-  // });
-  res.sendStatus(200);
+
+  report.save(function(err) {
+    if (err) {
+      res.send(err);
+    } else {
+      // mailOptions.to = report.email;
+      // mailOptions.html = compiledTemplate.render({answers: ansKey.inspReportJsonList, usrAns: report.inspectionList});
+      // transporter.sendMail(mailOptions, function(err, res){
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     console.log(res);
+      //   }      
+      // });
+      res.sendStatus(200);
+    }
+  });
+ 
 });
 
 module.exports = router;
