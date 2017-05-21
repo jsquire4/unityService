@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 mongoose.promise = require('bluebird');
 
 var ReportSchema = new Schema({
-  postData: Schema.Types.Mixed
+  postData: String
 });
 
-module.exports = mongoose.model('Report', ReportSchema);
+module.exports = mongoose.model('Report', ReportSchema); 
