@@ -51,7 +51,8 @@ router.get('/preview', function(req, res) {
 
 router.post('/reports', function(req, res) {
   var report = new Report();
-  report.postData = req.body.formData;
+  report.formData = req.body.formData.json;
+  console.log(report.postData);
   // report.inspectionList = sanitize(req.body.inspReportJsonList);
   // report.email = sanitize(req.body.emailAddress);
   report.save(function(err) {
