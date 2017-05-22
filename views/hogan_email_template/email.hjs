@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
 <body>
-  <h1>Rise and shout this email worked {{name}}</h1>
-<body>
+  <p>Dear {{usrAns}}, <br/> 
+    Thank you for participating in our building inspection training!  We are processing the results and will have the final report available for you soon. <br/>
+    In the meantime, please continue your training at our new training website <a href = "http://www.nephtc.org/">http://www.nephtc.org</a>. <br/><br/>
+
+    If you have any questions about this test or others tests like it, please contact us at <a>support@nephtc.org</a>. <br/>
+    Thank you! </br>
+  </p>
+  <h4 style = "font-family: arial; color: #194179"> New England Public Health Training Center </h4>
+</body>
 </html>
 

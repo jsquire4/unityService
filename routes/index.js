@@ -25,12 +25,8 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    type: 'Oauth2',
-    user: 'nephtc.noreply@gmail.com',
-    clientId: process.env.GMAIL_CLIENT_ID,
-    clientSecret: process.env.GMAIL_SECRET,
-    refreshToken: process.env.GMAIL_RFRSH_TOKEN,
-    accessToken: process.env.GMAIL_ACCESS_TOKEN
+    user: process.env.GMAIL_MAIL,
+    pass: process.env.GMAIL_PASS
   }
 });
 
@@ -38,15 +34,15 @@ var mailOptions = {
   from:'New England Public Health Training Center <nephtc.noreply@gmail.com>',
   to: '',
   subject: 'Your Inspection Test Results',
-  html: compiledTemplate.render({answers: ansKey.inspReportJsonList, usrAns: ansKey.inspReportJsonList})
+  html: compiledTemplate.render({usrAns: ansKey.inspReportJsonList})
 };  
 
 router.get('/', function(req, res) {
-  res.render('../views/email', {answers: ansKey.inspReportJsonList, usrAns: "user answers here"});
+  res.send({message: "There's nothing here"});
 });
 
 router.get('/preview', function(req, res) {
-  res.render('../views/email', {answers: ansKey.inspReportJsonList, usrAns: "user answers here"});
+  res.render('../views/email', {answers: ansKey.inspReportJsonList, usrAns: "USER"});
 });
 
 router.post('/reports', function(req, res) {
@@ -55,25 +51,24 @@ router.post('/reports', function(req, res) {
   console.log(stillData);
 
   var report = new Report();
-  report.formData = req.body.json;
-  console.log(report.postData);
-
-  // report.inspectionList = sanitize(req.body.inspReportJsonList);
-  // report.email = sanitize(req.body.emailAddress);
+  report.formData = sanitize(req.body.json);
+  var tmp = JSON.parse(report.formData);
+  var email = tmp.emailAddress;
+  console.log(email);
 
   report.save(function(err) {
     if (err) {
       res.send(err);
     } else {
-      // mailOptions.to = report.email;
-      // mailOptions.html = compiledTemplate.render({answers: ansKey.inspReportJsonList, usrAns: report.inspectionList});
-      // transporter.sendMail(mailOptions, function(err, res){
-      //   if (err) {
-      //     console.log(err);
-      //   } else {
-      //     console.log(res);
-      //   }      
-      // });
+      mailOptions.to = email;
+      mailOptions.html = compiledTemplate.render({answers: ansKey.inspReportJsonList, usrAns: email});
+      transporter.sendMail(mailOptions, function(err, res){
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(res);
+        }      
+      });
       res.sendStatus(200);
     }
   });
