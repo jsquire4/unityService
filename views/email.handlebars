@@ -3,10 +3,7 @@
 <p>These are your answers: </p>
 
 {{# each answers as |value key|}}
-  
-  <h4>{{key}}: </h4> 
-  <div>
-
+  <div class = "block-item">
     {{# each value as |v k|}}
 
         {{#eq k "sceneName"}}
@@ -23,70 +20,64 @@
 
         {{#eq k "violYN"}}
           <p>Where there any violations?</p>
-          <p>You answered: {{v.usrAns}}</p>
-            {{#if v.correct }}
-              <p>Correct!</p>
-            {{else}}
-              <p>Incorrect</p>
-              <p>The correct answer was: {{v.ans}}</p>
-            {{/if}}
+          <div class = "usr-col">
+            <p>You said: {{v.usrAns}}</p>
+          </div>
+          <div class = "ans-col">
+            <p>We said: {{v.ans}}</p>
+          </div>
         {{/eq}}
 
         {{#eq k "codeId"}}
           <p>Where there any citable codes?</p>
-          <p>You answered: {{v.usrAns}}</p>
-            {{#if v.correct }}
-              <p>Correct!</p>
-            {{else}}
-              <p>Incorrect</p>
-              <p>The correct answer was: {{v.ans}}</p>
-            {{/if}}
+          <div class = "usr-col">
+            <p>You said: {{v.usrAns}}</p>
+          </div>
+          <div class = "ans-col">
+            <p>We said: {{v.ans}}</p>
+          </div>
         {{/eq}}
 
         {{#eq k "violDescUser"}}
           <p>Describe the violation (Answers may vary): </p>
-          <p>You answered: {{v.usrAns}}</p>
-          <p>We answered: {{v.ans}}</p>
+          <div class = "usr-col">
+            <p>You said: {{v.usrAns}}</p>
+          </div>
+          <div class = "ans-col">
+            <p>We said: {{v.ans}}</p>
+          </div>
         {{/eq}}
 
         {{#eq k "endangered"}}
           <p>Is there a possibility of endangerment?</p>
-          <p>You answered: {{v.usrAns}}</p>
-            {{#if v.correct }}
-              <p>Correct!</p>
-            {{else}}
-              <p>Incorrect</p>
-              <p>The correct answer was: {{v.ans}}</p>
-            {{/if}}
+          <div class = "usr-col">
+            <p>You said: {{v.usrAns}}</p>
+          </div>
+          <div class = "ans-col">
+            <p>We said: {{v.ans}}</p>
+          </div>
         {{/eq}}
 
         {{#eq k "responsibleParty"}}
           <p>Who would be the responsible party in this case?</p>
-          <p>You answered: {{v.usrAns}}</p>
-            {{#if v.correct }}
-              <p>Correct!</p>
-            {{else}}
-              <p>Incorrect</p>
-              <p>The correct answer was: {{v.ans}}</p>
-            {{/if}}
+          <div class = "usr-col">
+            <p>You said: {{v.usrAns}}</p>
+          </div>
+          <div class = "ans-col">
+            <p>We said: {{v.ans}}</p>
+          </div>
         {{/eq}}
 
         {{#eq k "referral"}}
           <p>Where should this be referred?</p>
-          <p>You answered: {{v.usrAns}}</p>
-            {{#if v.correct }}
-              <p>Correct!</p>
-            {{else}}
-              <p>Incorrect</p>
-              <p>The correct answer was: {{v.ans}}</p>
-            {{/if}}
+          <div class = "usr-col">
+            <p>You said: {{v.usrAns}}</p>
+          </div>
+          <div class = "ans-col">
+            <p>We said: {{v.ans}}</p>
+          </div>
         {{/eq}}
-
     {{/each}}
-
-
+    
   </div>
-  <br />
-  <hr />
-
 {{/each}}

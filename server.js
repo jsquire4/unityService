@@ -12,9 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
+app.use(express.static(__dirname + '/public'));
 
 app.disabled('x-powered-by');
 app.set('port', process.env.PORT || 3000);
+
+
 
 app.use('/', routes);
 
