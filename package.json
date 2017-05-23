@@ -8,31 +8,28 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bluebird": "~3.5.0",
     "body-parser": "^1.17.1",
+    "config.json": "0.0.4",
     "express": "^4.15.2",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.2",
     "formidable": "^1.1.1",
     "fs": "0.0.1-security",
-    "mongodb": "2.2.26",
-    "morgan": "~1.6.1",
-    "mongoose": "~4.9.10",
-    "bluebird": "~3.5.0",
-    "nodemailer": "~4.0.1",
-    "mongo-sanitize": "~1.0.0",
-    "config.json": "0.0.4",
-    "sendgrid": "5.1.0",
+    "handlebars-helpers": "^0.8.2",
     "hogan.js": "3.0.2",
+    "mongo-sanitize": "~1.0.0",
+    "mongodb": "2.2.26",
+    "mongoose": "~4.9.10",
+    "morgan": "~1.6.1",
+    "nodemailer": "~4.0.1",
+    "sendgrid": "5.1.0",
     "xoauth2": "1.2.0"
   },
-  
   "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Jake Squire",
   "license": "ISC"
 }

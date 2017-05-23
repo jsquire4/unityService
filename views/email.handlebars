@@ -1,9 +1,93 @@
-<p>Dear {{usrAns}}, <br/> 
-  Thank you for participating in our building inspection training!  We are processing the results and will have the final report available for you soon. <br/>
-  In the meantime, please continue your training at our new training website <a href = "http://www.nephtc.org/">http://www.nephtc.org</a>. <br/><br/>
+<p>This is your name: {{name}}</p>
+<p>This is your email: {{email}}</p>
+<br />
+<p>These are your answers: </p>
 
-  If you have any questions about this test or others tests like it, please contact us at <a>support@nephtc.org</a>. <br/>
-  Thank you! </br>
-</p>
-<h4 style = "font-family: arial; color: #194179">New England Public Health Training Center </h4>
+{{# each answers as |value key|}}
+  
+  <h4>{{key}}: </h4> 
+  <div>
 
+    {{# each value as |v k|}}
+
+        {{#eq k "sceneName"}}
+            <p>Scene: {{v.id}}</p>
+        {{/eq}}
+
+        {{#eq k "indexNumber"}}
+            <p>Scene Item No. {{v.id}}</p>
+        {{/eq}}
+
+        {{#eq k "violStructID"}}
+            <p>{{v.id}}</p>
+        {{/eq}}
+
+        {{#eq k "violYN"}}
+          <p>Where there any violations?</p>
+          <p>You answered: {{v.usrAns}}</p>
+            {{#if v.correct }}
+              <p>Correct!</p>
+            {{else}}
+              <p>Incorrect</p>
+              <p>The correct answer was: {{v.ans}}</p>
+            {{/if}}
+        {{/eq}}
+
+        {{#eq k "codeId"}}
+          <p>Where there any citable codes?</p>
+          <p>You answered: {{v.usrAns}}</p>
+            {{#if v.correct }}
+              <p>Correct!</p>
+            {{else}}
+              <p>Incorrect</p>
+              <p>The correct answer was: {{v.ans}}</p>
+            {{/if}}
+        {{/eq}}
+
+        {{#eq k "violDescUser"}}
+          <p>Describe the violation (Answers may vary): </p>
+          <p>You answered: {{v.usrAns}}</p>
+          <p>We answered: {{v.ans}}</p>
+        {{/eq}}
+
+        {{#eq k "endangered"}}
+          <p>Is there a possibility of endangerment?</p>
+          <p>You answered: {{v.usrAns}}</p>
+            {{#if v.correct }}
+              <p>Correct!</p>
+            {{else}}
+              <p>Incorrect</p>
+              <p>The correct answer was: {{v.ans}}</p>
+            {{/if}}
+        {{/eq}}
+
+        {{#eq k "responsibleParty"}}
+          <p>Who would be the responsible party in this case?</p>
+          <p>You answered: {{v.usrAns}}</p>
+            {{#if v.correct }}
+              <p>Correct!</p>
+            {{else}}
+              <p>Incorrect</p>
+              <p>The correct answer was: {{v.ans}}</p>
+            {{/if}}
+        {{/eq}}
+
+        {{#eq k "referral"}}
+          <p>Where should this be referred?</p>
+          <p>You answered: {{v.usrAns}}</p>
+            {{#if v.correct }}
+              <p>Correct!</p>
+            {{else}}
+              <p>Incorrect</p>
+              <p>The correct answer was: {{v.ans}}</p>
+            {{/if}}
+        {{/eq}}
+
+    {{/each}}
+
+
+  </div>
+  <br />
+  <hr />
+
+{{/each}}
