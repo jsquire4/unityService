@@ -3,8 +3,7 @@
 <body>
   <div>
     <p>To: {{email}}, <br/> 
-      Thank you for participating in the virtual housing inspection of the MA PHIT Housing course. We are processing your results and will have your results shortly.<br/>
-
+      Thank you for participating in the virtual housing inspection of the MA PHIT Housing course.<a href = {{url}}> Click here</a> to review your results.<br/>
       Once you have your Final Report you must go back to the course page and:<br />
         <ul>
           <li>Upload a copy of your Final Report</li>

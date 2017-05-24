@@ -1,0 +1,99 @@
+<div class = 'container'>
+
+  <div class = 'heading'>
+    <h2>Inspection Practice Test Results</h2>
+    <h5>Name: {{name}}</h5>
+    <h5>Email: {{email}}</h5>
+  </div>
+
+{{# each answers as |value key|}}
+  <div class = "block-item">
+      <div class = "scene-block">
+            <p class = "identifiers">{{value.violStructID.id}},</p>
+            <p class = "identifiers"> Scene: {{value.sceneName.id}}</p>
+            <p class = "identifiers"> - Scene Item Id {{value.indexNumber.id}}</p>
+      </div>
+
+    <div class = "answer-block">
+        <div class = "question-row">
+          <p class = "question-item question-title">Question:</p>
+          <div class = "answer-columns">
+            <p class = "answer-title answer-item usr-col">You Answered:</p>
+            <p class = "answer-title answer-item key-col">We Said:</p>
+          </div>
+        </div>
+    </div>
+
+    {{# each value as |v k|}}
+
+        {{#eq k "violYN"}}
+        <div class = "question-row odd">
+          <p class = "question-item">Where there any violations?</p>
+          <div class = "answer-columns">
+            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            <p class = "answer-item key-col">{{v.ans}}</p>
+          </div>
+        </div>
+        {{/eq}}
+
+        {{#eq k "codeId"}}
+        <div class = "question-row">
+          <p class = "question-item">Where there any citable codes?</p>
+          <div class = "answer-columns">
+            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            <p class = "answer-item key-col">{{v.ans}}</p>
+          </div>
+        </div>
+        {{/eq}}
+
+        {{#eq k "violDescUser"}}
+        <div class = "question-row odd">
+          <p class = "question-item">Describe the violation (Answers may vary): </p>
+          <div class = "answer-columns">
+            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            <p class = "answer-item key-col">{{v.ans}}</p>
+          </div>
+        </div>
+        {{/eq}}
+
+        {{#eq k "endanger"}}
+        <div class = "question-row">
+          <p class = "question-item">Is there a possibility of endangerment?</p>
+          <div class = "answer-columns">
+            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            <p class = "answer-item key-col">{{v.ans}}</p>
+          </div>
+        </div>
+        {{/eq}}
+
+        {{#eq k "responsibleParty"}}
+        <div class = "question-row odd">
+          <p class = "question-item">Who would be the responsible party in this case?</p>
+          <div class = "answer-columns">
+            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            <p class = "answer-item key-col">{{v.ans}}</p>
+          </div>
+        </div>
+        {{/eq}}
+
+        {{#eq k "referral"}}
+        <div class = "question-row">
+          <p class = "question-item">Where should this be referred?</p>
+          <div class = "answer-columns">
+            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            <p class = "answer-item key-col">{{v.ans}}</p>
+          </div>
+        </div>
+        {{/eq}}
+    {{/each}}
+
+  </div>
+
+{{/each}}
+
+  <div class = "footer">
+    <h5>Legal Information Here</h6>
+    <h6>Comments? Concerns? Liabilities? Contact Us at support@nephtc.org</h6>
+  </div>
+
+</div>

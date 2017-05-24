@@ -9,6 +9,7 @@ var hogan = require('hogan.js');
 var fs = require('fs');
 var xoauth2 = require('xoauth2');
 var helpers = require('handlebars-helpers')();
+var url = require('url');
 
 
 
@@ -65,11 +66,6 @@ router.post('/reports', function(req, res) {
   var usrAns = mailData.inspReportJsonList;
   var email = mailData.emailAddress;
   
-
-  // Compile Answers
-  var list = new List();
-  var answers = list.getAnswers(ansKey.inspReportJsonList, mailData.inspReportJsonList);
-
   // insert into db
   report.save(function(err) {
     if (err) {
@@ -79,7 +75,7 @@ router.post('/reports', function(req, res) {
 
       // Insert callback configures email
       mailOptions.to = email;
-      mailOptions.html = compiledTemplate.render({answers: answers, email: email});
+      mailOptions.html = compiledTemplate.render({email: email});
 
       // send email
       transporter.sendMail(mailOptions, function(err, res){
@@ -99,6 +95,30 @@ router.post('/reports', function(req, res) {
  
 });
 
+router.post('/previews', function(req, res) {
+   var host = req.headers.host;
+  // create db object
+  var report = new Report();
+  report.formData = sanitize(req.body.json);
+
+  // parse needed info for email
+  // insert into db
+  report.save(function(err, data) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(503);
+    } else {
+      var email = "jsquire4@bu.edu";
+      var name = "Jake Squire";
+      var usrUrl = "https://" + host + "/reports/" + data._id;
+      console.log(usrUrl);
+      res.render('../views/previews', {email: email, name: name, usrUrl: usrUrl});
+    }
+
+  });
+ 
+});
+
 
 /**** GET:[PARAMS_ID] ****/
 router.get('/reports/:report_id', function(req, res) {
@@ -112,7 +132,7 @@ router.get('/reports/:report_id', function(req, res) {
         var answers = list.getAnswers(ansKey.inspReportJsonList, report.inspReportJsonList);
         var email = report.emailAddress;
 
-        res.render('../views/email', {answers: answers, email: email});
+        res.render('../views/show', {answers: answers, email: email, name: name});
     });
 });
 
