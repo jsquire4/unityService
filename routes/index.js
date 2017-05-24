@@ -11,24 +11,18 @@ var xoauth2 = require('xoauth2');
 var helpers = require('handlebars-helpers')();
 var url = require('url');
 
-
-
-
 // Connect database
 var mongoose = require('mongoose');
   mongoose.promise = require('bluebird');
   // assert.equal(query.exec().constructor, require('bluebird'));
   mongoose.connect('mongodb://' + process.env.MLAB_USER + ':' + process.env.MLAB_PASS + '@ds149221.mlab.com:49221/reports');
 
-
 // Required Models
 var Report = require('../models/reports');
 var List = require('../models/anslist');
 
-
-// Variables
+// Server Variables
 var ansKey = JSON.parse(fs.readFileSync("./answerKey.json"));
-
 
 // Needed mail variables and classes
 var nodemailer = require('nodemailer');
@@ -41,14 +35,13 @@ var transporter = nodemailer.createTransport({
     pass: process.env.GMAIL_PASS
   }
 });
+
 var mailOptions = {
   from:'New England Public Health Training Center <nephtc.noreply@gmail.com>',
   to: '',
   subject: 'Your Inspection Test Results',
   html: compiledTemplate.render({usrAns: ansKey.inspReportJsonList})
 }; 
-
-
 
 
 // Routes, Post --> post user answers to database, Get:report_id --> see individual report
@@ -61,23 +54,27 @@ router.post('/reports', function(req, res) {
   var report = new Report();
   report.formData = sanitize(req.body.json);
 
-  // parse needed info for email
+  // get email
   var mailData = JSON.parse(report.formData);
-  var usrAns = mailData.inspReportJsonList;
   var email = mailData.emailAddress;
+  // var name = mailData.name; // *** Use name when available ***
   
   // insert into db
-  report.save(function(err) {
+  report.save(function(err, data) {
     if (err) {
       console.log(err);
       res.sendStatus(503);
     } else {
 
-      // Insert callback configures email
-      mailOptions.to = email;
-      mailOptions.html = compiledTemplate.render({email: email});
+      var host = req.headers.host;
+      var usrUrl = "https://" + host + "/reports/" + data._id;
 
-      // send email
+      // On callback configure email
+      mailOptions.to = email;
+      mailOptions.html = compiledTemplate.render({email: email, usrUrl: usrUrl}); // mail template located in views/hogan_email_template/email.hjs
+      //mailOptions.html = compiledTemplate.render({email: email, usrUrl: usrUrl, name: name}); // *** Use name when available ***
+
+      // Send
       transporter.sendMail(mailOptions, function(err, res){
         if (err) {
           res.sendStatus(501);
@@ -87,7 +84,6 @@ router.post('/reports', function(req, res) {
         }      
       });
 
-      // Send 
       res.sendStatus(200);
     }
 
@@ -95,28 +91,20 @@ router.post('/reports', function(req, res) {
  
 });
 
-router.post('/previews', function(req, res) {
-   var host = req.headers.host;
-  // create db object
+router.post('/secret_posting_url_for_previewing_email', function(req, res) {
   var report = new Report();
   report.formData = sanitize(req.body.json);
-
-  // parse needed info for email
-  // insert into db
   report.save(function(err, data) {
     if (err) {
       console.log(err);
       res.sendStatus(503);
     } else {
-      var email = "jsquire4@bu.edu";
-      var name = "Jake Squire";
-      var usrUrl = "https://" + host + "/reports/" + data._id;
-      console.log(usrUrl);
+      var host = req.headers.host;
+      var email = "user@usermail.com";
+      var usrUrl = "https://" + host + "/reports/" + data._id;    
       res.render('../views/previews', {email: email, name: name, usrUrl: usrUrl});
     }
-
-  });
- 
+  }); 
 });
 
 
@@ -131,8 +119,11 @@ router.get('/reports/:report_id', function(req, res) {
         var list = new List();
         var answers = list.getAnswers(ansKey.inspReportJsonList, report.inspReportJsonList);
         var email = report.emailAddress;
+        // var name = report.name; // *** Use name when avaialble ***
 
-        res.render('../views/show', {answers: answers, email: email, name: name});
+        // Render report show page 
+        res.render('../views/show', {answers: answers, email: email});
+        // res.render('../views/show', {answers: answers, email: email, name: name}); // *** Use name when available ***
     });
 });
 
