@@ -20,7 +20,7 @@
             "violDescUser": "Broken handrail on steps leading up to common area front porch",
             "endanger": "No",
             "responsibleParty": "Owner",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 1,
             "indexNumber": 1
         },
@@ -67,7 +67,7 @@
             "violDescUser": "Owner provided stove is broken (one burner won’t light) ",
             "endanger": "Yes",
             "responsibleParty": "Owner",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 2,
             "indexNumber": 0
         },
@@ -92,7 +92,7 @@
             "violDescUser": "Rodent (mice) droppings and dead mouse observed in cabinet under the sink and hole observed at the back of this cabinet",
             "endanger": "Yes",
             "responsibleParty": "Owner",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 2,
             "indexNumber": 2
         },
@@ -105,7 +105,7 @@
             "violDescUser": "Kitchen floor tiles observed chipped, broken, and missing ",
             "endanger": "No",
             "responsibleParty": "Owner",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 2,
             "indexNumber": 3
         },
@@ -140,7 +140,7 @@
             "violDescUser": "Living room wall has cracks under the window ",
             "endanger": "No",
             "responsibleParty": "Owner",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 3,
             "indexNumber": 0
         },
@@ -175,7 +175,7 @@
             "violDescUser": "Baseboard radiator cover is missing",
             "endanger": "No",
             "responsibleParty": "Owner",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 3,
             "indexNumber": 3
         },
@@ -189,7 +189,7 @@
             "violDescUser": "Tiles are missing and broken  on  shower wall",
             "endanger": "Yes",
             "responsibleParty": "Owner",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 4,
             "indexNumber": 0
         },
@@ -235,7 +235,7 @@
             "violDescUser": "Mold is growing on shower walls (vent fan works)",
             "endanger": "No",
             "responsibleParty": "Occupant",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 4,
             "indexNumber": 4
         },
@@ -272,7 +272,7 @@
             "violDescUser": "Heat source (radiator) in bedroom 2 is inoperable and room temperature recorded at 58◦F",
             "endanger": "Yes",
             "responsibleParty": "Owner",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 5,
             "indexNumber": 2
         },
@@ -296,7 +296,7 @@
             "violDescUser": "3 beds in bedroom 1 (10 x 10)—occupant confirms 3 teenagers sleep in this room",
             "endanger": "No",
             "responsibleParty": "Owner",
-            "referral": "None",
+            "referral": "N/A",
             "sceneName": 6,
             "indexNumber": 1
         },

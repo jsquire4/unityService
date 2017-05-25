@@ -122,7 +122,7 @@ router.get('/reports/:report_id', function(req, res) {
         // var name = report.name; // *** Use name when avaialble ***
 
         // Render report show page 
-        res.render('../views/show', {answers: answers, email: email});
+        res.render('../views/show', {title: "Final Report", answers: answers, email: email});
         // res.render('../views/show', {answers: answers, email: email, name: name}); // *** Use name when available ***
     });
 });
