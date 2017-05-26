@@ -11,9 +11,10 @@ module.exports = function(app){
 
   function combineKeys(ans, usr) {
     var comObj = {};
-    comObj.violStructID = {"id": ans.violStructID, "description": true};
-    comObj.sceneName = {"id": ans.sceneName, "description": false};
-    comObj.indexNumber = {"id": ans.indexNumber, "description": false};
+    comObj.violStructID = {"id": ans.violStructID};
+    comObj.sceneName = {"id": ans.sceneName};
+    comObj.indexNumber = {"id": ans.indexNumber};
+    comObj.location = {"id": ans.location};
 
     if (!ans.codeId[0]){
       ans.codeId = "N/A";

@@ -9,6 +9,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 1,
+            "location": "Outside",
             "indexNumber": 0
         },
         {
@@ -22,6 +23,7 @@
             "responsibleParty": "Owner",
             "referral": "N/A",
             "sceneName": 1,
+            "location": "Outside",
             "indexNumber": 1
         },
     {
@@ -33,6 +35,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 1,
+            "location": "Outside",
             "indexNumber": 2
         },
     {
@@ -44,6 +47,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 1,
+            "location": "Outside",
             "indexNumber": 3
         },
     {
@@ -55,6 +59,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 1,
+            "location": "Outside",
             "indexNumber": 4
         },
         {
@@ -69,6 +74,7 @@
             "responsibleParty": "Owner",
             "referral": "N/A",
             "sceneName": 2,
+            "location": "Kitchen",
             "indexNumber": 0
         },
         {
@@ -80,6 +86,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 2,
+            "location": "Kitchen",
             "indexNumber": 1
         },
         {
@@ -94,6 +101,7 @@
             "responsibleParty": "Owner",
             "referral": "N/A",
             "sceneName": 2,
+            "location": "Kitchen",
             "indexNumber": 2
         },
         {
@@ -107,6 +115,7 @@
             "responsibleParty": "Owner",
             "referral": "N/A",
             "sceneName": 2,
+            "location": "Kitchen",
             "indexNumber": 3
         },
         {
@@ -118,6 +127,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 2,
+            "location": "Kitchen",
             "indexNumber": 4
         },
         {
@@ -129,6 +139,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 2,
+            "location": "Kitchen",
             "indexNumber": 5
         },
         {
@@ -142,6 +153,7 @@
             "responsibleParty": "Owner",
             "referral": "N/A",
             "sceneName": 3,
+            "location": "Outside",
             "indexNumber": 0
         },
         {
@@ -153,6 +165,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 3,
+            "location": "Living Room",
             "indexNumber": 1
         },
         {
@@ -164,6 +177,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 3,
+            "location": "Living Room",
             "indexNumber": 2
         },
         {
@@ -177,6 +191,7 @@
             "responsibleParty": "Owner",
             "referral": "N/A",
             "sceneName": 3,
+            "location": "Living Room",
             "indexNumber": 3
         },
         {
@@ -191,6 +206,7 @@
             "responsibleParty": "Owner",
             "referral": "N/A",
             "sceneName": 4,
+            "location": "Bathroom",
             "indexNumber": 0
         },
     {
@@ -202,6 +218,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 4,
+            "location": "Bathroom",
             "indexNumber": 1
         },
     {
@@ -213,6 +230,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 4,
+            "location": "Bathroom",
             "indexNumber": 2
         },
     {
@@ -224,6 +242,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 4,
+            "location": "Bathroom",
             "indexNumber": 3
         },
         {
@@ -237,6 +256,7 @@
             "responsibleParty": "Occupant",
             "referral": "N/A",
             "sceneName": 4,
+            "location": "Bathroom",
             "indexNumber": 4
         },
     {
@@ -248,6 +268,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 5,
+            "location": "Bedroom 1",
             "indexNumber": 0
         },
     {
@@ -259,6 +280,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 5,
+            "location": "Bedroom 1",
             "indexNumber": 1
         },
         {
@@ -274,6 +296,7 @@
             "responsibleParty": "Owner",
             "referral": "N/A",
             "sceneName": 5,
+            "location": "Bedroom 1",
             "indexNumber": 2
         },
     {
@@ -285,6 +308,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 6,
+            "location": "Bedroom 2",
             "indexNumber": 0
         },
         {
@@ -298,6 +322,7 @@
             "responsibleParty": "Owner",
             "referral": "N/A",
             "sceneName": 6,
+            "location": "Bedroom 2",
             "indexNumber": 1
         },
     {
@@ -309,6 +334,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 6,
+            "location": "Bedroom 2",
             "indexNumber": 2
         },
     {
@@ -320,6 +346,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 7,
+            "location": "Outside",
             "indexNumber": 0
         },
     {
@@ -331,6 +358,7 @@
             "responsibleParty": "N/A",
             "referral": "N/A",
             "sceneName": 7,
+            "location": "Hall",
             "indexNumber": 1
         },
         {
@@ -345,6 +373,7 @@
             "responsibleParty": "Owner",
             "referral": "Fire",
             "sceneName": 7,
+            "location": "Hall",
             "indexNumber": 2
         }
     ]

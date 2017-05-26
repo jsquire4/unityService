@@ -8,9 +8,7 @@
 {{# each answers as |value key|}}
   <div class = "block-item">
       <div class = "scene-block">
-            <p class = "identifiers">{{value.violStructID.id}},</p>
-            <p class = "identifiers"> Scene: {{value.sceneName.id}}</p>
-            <p class = "identifiers"> - Scene Item Id {{value.indexNumber.id}}</p>
+            <p class = "identifiers">{{value.location.id}} -- {{value.violStructID.id}}</p>
       </div>
 
     <div class = "answer-block">
@@ -28,10 +26,18 @@
         {{#eq k "violYN"}}
         <div class = "question-row odd">
           <p class = "question-item">Were there any violations?</p>
+
           <div class = "answer-columns">
-            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+
+            {{#if v.correct}}
+              <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            {{else}}
+              <p class = "answer-item usr-col incorrect">{{v.usrAns}}</p>
+            {{/if}}
+
             <p class = "answer-item key-col">{{v.ans}}</p>
           </div>
+
         </div>
         {{/eq}}
 
@@ -39,7 +45,13 @@
         <div class = "question-row">
           <p class = "question-item">Were there any citable codes?</p>
           <div class = "answer-columns">
-            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+
+            {{#if v.correct}}
+              <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            {{else}}
+              <p class = "answer-item usr-col incorrect">{{v.usrAns}}</p>
+            {{/if}}
+
             <p class = "answer-item key-col">{{v.ans}}</p>
           </div>
         </div>
@@ -47,7 +59,7 @@
 
         {{#eq k "violDescUser"}}
         <div class = "question-row odd">
-          <p class = "question-item">Describe the violation: </p>
+          <p class = "question-item">Describe the violation: (Answers will vary)</p>
           <div class = "answer-columns">
             <p class = "answer-item usr-col">{{v.usrAns}}</p>
             <p class = "answer-item key-col">{{v.ans}}</p>
@@ -59,7 +71,13 @@
         <div class = "question-row">
           <p class = "question-item">Is there a possibility of endangerment?</p>
           <div class = "answer-columns">
-            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+
+            {{#if v.correct}}
+              <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            {{else}}
+              <p class = "answer-item usr-col incorrect">{{v.usrAns}}</p>
+            {{/if}}
+
             <p class = "answer-item key-col">{{v.ans}}</p>
           </div>
         </div>
@@ -69,7 +87,13 @@
         <div class = "question-row odd">
           <p class = "question-item">Who would be the responsible party in this case?</p>
           <div class = "answer-columns">
-            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+
+            {{#if v.correct}}
+              <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            {{else}}
+              <p class = "answer-item usr-col incorrect">{{v.usrAns}}</p>
+            {{/if}}
+
             <p class = "answer-item key-col">{{v.ans}}</p>
           </div>
         </div>
@@ -79,7 +103,13 @@
         <div class = "question-row">
           <p class = "question-item">Where should this be referred?</p>
           <div class = "answer-columns">
-            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+
+            {{#if v.correct}}
+              <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            {{else}}
+              <p class = "answer-item usr-col incorrect">{{v.usrAns}}</p>
+            {{/if}}
+
             <p class = "answer-item key-col">{{v.ans}}</p>
           </div>
         </div>

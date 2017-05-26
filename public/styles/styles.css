@@ -19,6 +19,7 @@
   .scene-block {
     background: #d4d4d4;
     font-weight: bold;
+    padding-top: 10px;
   }
 
   .answer-item {
@@ -41,10 +42,13 @@
 
   .identifiers {
     display: inline;
+    vertical-align: top;
+    line-height: 100%;
   }
 
   .answer-block {
     display: block;
+    padding-top: 5px;
     
   }
 
@@ -68,6 +72,10 @@
     margin-top: 25px;
     text-align: center;
     padding-bottom: 25px;
+  }
+
+  .incorrect {
+    color: red;
   }
 
 }
