@@ -2,18 +2,21 @@ module.exports = function(app){
   var module = {};
 
   function mkObj(ans, usr){
-
-    if (usr) {
-      var obj = {"ans": ans, "usrAns": usr, "correct": false};  
-      if (String(ans) === String(usr)) {
+    if (usr) { // if there are answers
+      var obj = {"ans": ans, "usrAns": usr, "correct": false};
+      // check if user got answer correct
+      if (Array.isArray(usr) && Array.isArray(ans)){// check violation codes; if arrays
+        if (String(ans.sort()) == String(usr.sort())){
+          obj.correct = true;
+        }
+      } else if (ans === usr) { // for all the other correct answers
         obj.correct = true;
       }
       return obj;
     }
-
+    // if there are no answers
     var obj = {"ans": ans, "usrAns": "No Answer", "correct": false};
     return obj;
-    
   }
 
   function combineKeys(ans, usr) {
@@ -27,7 +30,7 @@ module.exports = function(app){
       ans.codeId = "N/A";
     }
 
-    if (usr) { // asserts user answered this set
+    if (usr) { // assumes user answered this set
       if (!usr.codeId[0]) {
         usr.codeId = "N/A";
       }
@@ -48,7 +51,7 @@ module.exports = function(app){
       return comObj;
     }
 
-      // return empty user spaces if object does not exist
+    // return empty user spaces if object does not exist
     comObj.violYN = mkObj(ans.violYN, null);
     comObj.codeId = mkObj(ans.codeId, null);
     comObj.violDescUser = mkObj(ans.violDescUser, null);
@@ -56,32 +59,31 @@ module.exports = function(app){
     comObj.responsibleParty = mkObj(ans.responsibleParty, null);
     comObj.referral = mkObj(ans.referral, null);
     
-
     return comObj;
   }
 
   module.getAnswers = function (answerKey, userAnswers){
     var combined = {};
-    for (var i = 0; i < answerKey.length; i++){
+
+    for (var i = 0; i < answerKey.length; i++){ // start loop through answer key
       var ans = answerKey[i];
-      
-      if (userAnswers[i]){
-        var usr = userAnswers[i];
-        if ((ans.sceneName == usr.sceneName && ans.indexNumber == usr.indexNumber)) {
+      var match = false;
+      for (var j = 0; j < userAnswers.length; j++){ // start loop through users answers
+        var usr = userAnswers[j];
+        if ((ans.sceneName == usr.sceneName && ans.indexNumber == usr.indexNumber)) { // must compare based on this.. there is no unique id
+          // match found, compare data and combine
           combined[i] = combineKeys(ans, usr);
-        } else {
-
+          match = true;
+          break;
         }
-       
-      } else { // if the user answers for this set don't exist
-          combined[i] = combineKeys(ans, null);
-        // make answer key object return "did not answer for user spaces"
       }
-
-      
+      if (!match) { // There was no user data for this set
+        combined[i] = combineKeys(ans, null); 
+      }
     }
     return combined;
   };
+
 
   return module;
 }
