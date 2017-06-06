@@ -59,7 +59,7 @@ router.post('/reports', function(req, res) {
   var email = mailData.emailAddress;
   // var name = mailData.name; // *** Use name when available ***
   
-  // insert into db
+  // insert into db 
   report.save(function(err, data) {
     if (err) {
       console.log(err);

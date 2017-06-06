@@ -2,6 +2,4 @@
 node_modules
 *~
 .DS_Store
-config.json
 .env
-google_secret.json

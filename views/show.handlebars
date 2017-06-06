@@ -6,6 +6,15 @@
   </div>
 
 {{# each answers as |value key|}}
+
+  {{#eq value "Error"}}
+    <div class = "block-item">
+      <div class = "scene-block">
+        <p class = "identifiers incorrect"> ERROR </p>
+      </div>
+    </div>
+  {{/eq}}
+
   <div class = "block-item">
       <div class = "scene-block">
             <p class = "identifiers">{{value.location.id}} -- {{value.violStructID.id}}</p>
@@ -61,7 +70,11 @@
         <div class = "question-row odd">
           <p class = "question-item">Describe the violation: (Answers will vary)</p>
           <div class = "answer-columns">
-            <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            {{#eq v.correct "Variable"}}
+              <p class = "answer-item usr-col">{{v.usrAns}}</p>
+            {{else}}
+              <p class = "answer-item usr-col incorrect">{{v.usrAns}}</p>
+            {{/eq}}
             <p class = "answer-item key-col">{{v.ans}}</p>
           </div>
         </div>
