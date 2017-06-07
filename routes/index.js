@@ -11,6 +11,7 @@ var xoauth2 = require('xoauth2');
 var helpers = require('handlebars-helpers')();
 var url = require('url');
 
+
 // Connect database
 var mongoose = require('mongoose');
   mongoose.promise = require('bluebird');
@@ -126,9 +127,6 @@ router.get('/reports/:report_id', function(req, res) {
         // res.render('../views/show', {answers: answers, email: email, name: name}); // *** Use name when available ***
     });
 });
-
-
-
 
 
 
