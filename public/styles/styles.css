@@ -78,6 +78,31 @@
     color: red;
   }
 
+  #download-block {
+    background-color: #294f7d;
+    width: 250px;
+    border-radius: 5px;
+    color: white;
+    height: 50px;
+    margin-bottom: 25px;
+  }
+
+  #download-block:hover {
+    background: #183e6d;
+  }
+
+  #download-block:active {
+    background: #2f445d;
+  }
+
+  #download-text {
+    text-align: center;
+    width: 100%;
+    padding-top: 7px;
+    font-size: 24px;
+    margin: 0;
+  }
+
 }
 
 @media screen and (min-width: 600px) {
@@ -166,6 +191,12 @@
   .incorrect {
     color: red;
   }
+
+  #download-block {
+    display: none;
+  }
+
+
 
 }
 

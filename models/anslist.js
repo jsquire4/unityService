@@ -35,9 +35,6 @@ module.exports = function(app){
         usr.codeId = "N/A";
       }
 
-      if (usr.referral == "None") {
-        usr.referral = "N/A";
-      }
       //really it would be better to loop through this, but I can never seem to get it to work
       comObj.violYN = mkObj(ans.violYN, usr.violYN);
       comObj.codeId = mkObj(ans.codeId, usr.codeId);

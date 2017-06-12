@@ -67,12 +67,12 @@
             "violYN": "Yes",
             "codeId": [
                 "410.100 (A)(2)",
-                "410.750 (O)"
+                "410.750 (O)(1)"
             ],
             "violDescUser": "Owner provided stove is broken (one burner won’t light) ",
             "endanger": "Yes",
             "responsibleParty": "Owner",
-            "referral": "N/A",
+            "referral": "None",
             "sceneName": 2,
             "location": "Kitchen",
             "indexNumber": 0
@@ -99,7 +99,7 @@
             "violDescUser": "Rodent (mice) droppings and dead mouse observed in cabinet under the sink and hole observed at the back of this cabinet",
             "endanger": "Yes",
             "responsibleParty": "Owner",
-            "referral": "N/A",
+            "referral": "None",
             "sceneName": 2,
             "location": "Kitchen",
             "indexNumber": 2
@@ -113,7 +113,7 @@
             "violDescUser": "Kitchen floor tiles observed chipped, broken, and missing ",
             "endanger": "No",
             "responsibleParty": "Owner",
-            "referral": "N/A",
+            "referral": "None",
             "sceneName": 2,
             "location": "Kitchen",
             "indexNumber": 3
@@ -148,10 +148,10 @@
             "codeId": [
                 "410.500"
             ],
-            "violDescUser": "Living room wall has cracks under the window ",
+            "violDescUser": "Living room wall has cracks under the window",
             "endanger": "No",
             "responsibleParty": "Owner",
-            "referral": "N/A",
+            "referral": "None",
             "sceneName": 3,
             "location": "Outside",
             "indexNumber": 0
@@ -189,7 +189,7 @@
             "violDescUser": "Baseboard radiator cover is missing",
             "endanger": "No",
             "responsibleParty": "Owner",
-            "referral": "N/A",
+            "referral": "None",
             "sceneName": 3,
             "location": "Living Room",
             "indexNumber": 3
@@ -204,7 +204,7 @@
             "violDescUser": "Tiles are missing and broken  on  shower wall",
             "endanger": "Yes",
             "responsibleParty": "Owner",
-            "referral": "N/A",
+            "referral": "None",
             "sceneName": 4,
             "location": "Bathroom",
             "indexNumber": 0
@@ -254,7 +254,7 @@
             "violDescUser": "Mold is growing on shower walls (vent fan works)",
             "endanger": "No",
             "responsibleParty": "Occupant",
-            "referral": "N/A",
+            "referral": "None",
             "sceneName": 4,
             "location": "Bathroom",
             "indexNumber": 4
@@ -288,13 +288,13 @@
             "violYN": "Yes",
             "codeId": [
                 "410.200",
-                "410.200",
+                "410.201",
                 "410.750 (B)"
             ],
             "violDescUser": "Heat source (radiator) in bedroom 2 is inoperable and room temperature recorded at 58◦F",
             "endanger": "Yes",
             "responsibleParty": "Owner",
-            "referral": "N/A",
+            "referral": "None",
             "sceneName": 5,
             "location": "Bedroom 1",
             "indexNumber": 2
@@ -320,7 +320,7 @@
             "violDescUser": "3 beds in bedroom 1 (10 x 10)—occupant confirms 3 teenagers sleep in this room",
             "endanger": "No",
             "responsibleParty": "Owner",
-            "referral": "N/A",
+            "referral": "None",
             "sceneName": 6,
             "location": "Bedroom 2",
             "indexNumber": 1
@@ -365,7 +365,7 @@
             "violStructID": "Smoke detectors and carbon monoxide alarms",
             "violYN": "Yes",
             "codeId": [
-                "410.482 (A) ",
+                "410.482 (A)",
                 "410.750 (N)"
             ],
             "violDescUser": "Smoke and carbon monoxide detectors in 2nd floor hallway not operational; covers observed hanging open with wires dangling ",

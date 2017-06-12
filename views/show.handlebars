@@ -2,7 +2,11 @@
 
   <div class = 'heading'>
     <h2>Final Report</h2>
-    <h5>Email: {{email}}</h5>
+    <h5 id = "emailField">Email: {{email}}</h5>
+  </div>
+
+  <div id = "download-block">
+    <p id = "download-text">Download PDF</p>
   </div>
 
 {{# each answers as |value key|}}
@@ -139,3 +143,95 @@
   </div>
 
 </div>
+
+<script src="https://cdn.jsdelivr.net/jspdf/1.3.4/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.2/jspdf.plugin.autotable.min.js"></script>
+
+<script type="text/javascript">
+
+  function getQuestionObj (block) {
+    var usrData = [];
+    for (var j = 2; j < block.length; j++) { // start at 2; first and second child in lines above
+      var row = block[j].children;
+      var question = row[0].innerText;
+      var usrAns = row[1].children[0].innerText;
+      var ans = row[1].children[1].innerText;
+      var data = {"question": question, "usrAns": usrAns, "ans": ans};
+      usrData.push(data);
+    }
+    return usrData;
+  }
+
+  $(document).ready(function(){
+    $("#download-block").on('click', function(){
+      var usrEmail = $("#emailField")[0].innerText;
+      var doc = new jsPDF ('p', "pt");
+      doc.text(7, 20, "Final Report");
+      doc.text(7, 40,  usrEmail);
+      var blockitems = $('.block-item');
+      for (var i = 0; i < blockitems.length; i ++) {
+        // Get info for one pdf block
+        var locationTitle = blockitems[i].children[0].children[0].innerText;
+        var columns = [
+          {title: "Question:", dataKey: "question"}, 
+          {title: "You Said:", dataKey: "usrAns"}, 
+          {title: "We Said:", dataKey: "ans"}
+        ];
+        var rows = getQuestionObj(blockitems[i].children);
+        if (i < 1 ) {
+          doc.text(7, 80, locationTitle);
+          doc.autoTable(columns, rows, {
+            startY: 85,
+            margin: {horizontal: 7},
+            styles: {overflow: 'linebreak', columnWidth: 'auto'},
+            columnStyles: {
+              question: {columnWidth: 150},
+              usrAns: {columnWidth: 215},
+              ans: {columnWidth: 215}
+            },
+            headerStyles: {
+              fillColor: [140, 140, 140],
+              fontSize: 14
+            }
+          });
+        } else {
+          doc.text(7, doc.autoTable.previous.finalY + 20, locationTitle);
+          doc.autoTable(columns, rows, {
+            startY: doc.autoTable.previous.finalY + 25,
+            margin: {horizontal: 7},
+            styles: {overflow: 'linebreak', columnWidth: 'auto'},
+            columnStyles: {
+              question: {columnWidth: 150},
+              usrAns: {columnWidth: 215},
+              ans: {columnWidth: 215}
+            },
+            headerStyles: {
+              fillColor: [140, 140, 140],
+              fontSize: 14
+            }
+          });
+        }
+      }
+      doc.output('save', 'final_report.pdf');
+    });
+  });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

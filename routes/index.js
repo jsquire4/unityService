@@ -92,41 +92,25 @@ router.post('/reports', function(req, res) {
  
 });
 
-router.post('/secret_posting_url_for_previewing_email', function(req, res) {
-  var report = new Report();
-  report.formData = sanitize(req.body.json);
-  report.save(function(err, data) {
-    if (err) {
-      console.log(err);
-      res.sendStatus(503);
-    } else {
-      var host = req.headers.host;
-      var email = "user@usermail.com";
-      var usrUrl = "https://" + host + "/reports/" + data._id;    
-      res.render('../views/previews', {email: email, name: name, usrUrl: usrUrl});
-    }
-  }); 
-});
-
-
 /**** GET:[PARAMS_ID] ****/
 router.get('/reports/:report_id', function(req, res) {
-    Report.findById(req.params.report_id, function(err, report) {
-        if (err) {
-          res.sendStatus(404);
-          console.log(err);
-        }
-        report = JSON.parse(report.formData);
-        var list = new List();
-        var answers = list.getAnswers(ansKey.inspReportJsonList, report.inspReportJsonList);
-        var email = report.emailAddress;
-        // var name = report.name; // *** Use name when avaialble ***
+  Report.findById(req.params.report_id, function(err, report) {
+      if (err) {
+        res.sendStatus(404);
+        console.log(err);
+      }
+      report = JSON.parse(report.formData);
+      var list = new List();
+      var answers = list.getAnswers(ansKey.inspReportJsonList, report.inspReportJsonList);
+      var email = report.emailAddress;
+      // var name = report.name; // *** Use name when avaialble ***
 
-        // Render report show page 
-        res.render('../views/show', {title: "Final Report", answers: answers, email: email});
-        // res.render('../views/show', {answers: answers, email: email, name: name}); // *** Use name when available ***
-    });
+      // Render report show page 
+      res.render('../views/show', {title: "Final Report", answers: answers, email: email});
+      // res.render('../views/show', {answers: answers, email: email, name: name}); // *** Use name when available ***
+  });
 });
+
 
 
 
