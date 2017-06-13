@@ -195,9 +195,18 @@
             }
           });
         } else {
-          doc.text(7, doc.autoTable.previous.finalY + 20, locationTitle);
+
+          var pageHeight = 792;
+          var currentLine = doc.autoTable.previous.finalY + 30;
+
+          if ((pageHeight - currentLine) < 200) {
+            doc.addPage();
+            var currentLine = 25;
+          }
+
+          doc.text(7, currentLine, locationTitle);
           doc.autoTable(columns, rows, {
-            startY: doc.autoTable.previous.finalY + 25,
+            startY: currentLine + 5,
             margin: {horizontal: 7},
             styles: {overflow: 'linebreak', columnWidth: 'auto'},
             columnStyles: {
