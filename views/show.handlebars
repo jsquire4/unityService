@@ -151,7 +151,7 @@
 
   function getQuestionObj (block) {
     var usrData = [];
-    for (var j = 2; j < block.length; j++) { // start at 2; first and second child in lines above
+    for (var j = 2; j < block.length; j++) { // start at 2; first and second child already captured
       var row = block[j].children;
       var question = row[0].innerText;
       var usrAns = row[1].children[0].innerText;
@@ -164,21 +164,23 @@
 
   $(document).ready(function(){
     $("#download-block").on('click', function(){
-      var usrEmail = $("#emailField")[0].innerText;
-      var doc = new jsPDF ('p', "pt");
+      var usrEmail = $("#emailField")[0].innerText; 
+
+      var doc = new jsPDF ('p', "pt"); // set up doc object and inital header
       doc.text(7, 20, "Final Report");
       doc.text(7, 40,  usrEmail);
+
       var blockitems = $('.block-item');
       for (var i = 0; i < blockitems.length; i ++) {
-        // Get info for one pdf block
-        var locationTitle = blockitems[i].children[0].children[0].innerText;
+        var locationTitle = blockitems[i].children[0].children[0].innerText; // Violation Location
         var columns = [
-          {title: "Question:", dataKey: "question"}, 
+          {title: "Question:", dataKey: "question"}, // table columns
           {title: "You Said:", dataKey: "usrAns"}, 
           {title: "We Said:", dataKey: "ans"}
         ];
-        var rows = getQuestionObj(blockitems[i].children);
-        if (i < 1 ) {
+        var rows = getQuestionObj(blockitems[i].children); // table data
+        
+        if (i < 1 ) { // first table is set to be below the header on the first page
           doc.text(7, 80, locationTitle);
           doc.autoTable(columns, rows, {
             startY: 85,
@@ -194,12 +196,12 @@
               fontSize: 14
             }
           });
-        } else {
 
+        } else {
           var pageHeight = 792;
           var currentLine = doc.autoTable.previous.finalY + 30;
 
-          if ((pageHeight - currentLine) < 200) {
+          if ((pageHeight - currentLine) < 200) { // check if near end of page; break and start on new page
             doc.addPage();
             var currentLine = 25;
           }
