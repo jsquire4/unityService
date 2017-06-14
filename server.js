@@ -22,19 +22,12 @@ app.set('port', process.env.PORT || 3000);
 app.use('/', routes);
 
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+  res.sendStatus(404);
 });
 
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-  });
-}
-
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.sendStatus(503);
 });
 
 app.listen(app.get('port'), function(){

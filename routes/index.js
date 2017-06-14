@@ -48,6 +48,10 @@ var mailOptions = {
 // Routes, Post --> post user answers to database, Get:report_id --> see individual report
 var router = express.Router();
 
+router.get('/reports', function(req, res) {
+  res.sendStatus(405);
+});
+
 /**** POST ****/
 router.post('/reports', function(req, res) {
 
@@ -84,7 +88,6 @@ router.post('/reports', function(req, res) {
           console.log(res);
         }      
       });
-
       res.sendStatus(200);
     }
 
@@ -111,7 +114,17 @@ router.get('/reports/:report_id', function(req, res) {
   });
 });
 
+router.put('/reports/:report_id', function(req, res) {
+  res.sendStatus(405);
+});
 
+router.patch('/reports/:report_id', function(req, res) {
+  res.sendStatus(405);
+});
+
+router.delete('/reports/:report_id', function(req, res){
+  res.sendStatus(405);
+});
 
 
 
