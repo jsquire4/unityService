@@ -21,6 +21,10 @@ app.set('port', process.env.PORT || 3000);
 
 app.use('/', routes);
 
+app.get('/favicon.ico', function(req, res) {
+    res.send(204);
+});
+
 app.use(function(req, res, next) {
   res.sendStatus(404);
 });
