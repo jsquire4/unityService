@@ -24,7 +24,7 @@ After adding the .env file, iniate the server (while in the project root directo
 - npm install
 - node server.js
 
-There are currently only 3 routes that work:
+There are currently only 2 routes that work:
 // (index.js)
 
 1. post (/reports)
@@ -32,9 +32,6 @@ There are currently only 3 routes that work:
 
 2. get (/reports/:report_id)
   This route brings up a show page for the user that has successfully posted a report, and recieved an email.The report id is generated and then added to the variable link in each email from the post(/reports)
-  
-3. post (/secret_posting_url_for_previewing_email)
-  This route is just to help with checking post data, and email development.  Using the Postman application by Google makes it easier to decipher
   
 Current dependencies:
 - bluebird
