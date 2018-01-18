@@ -18,8 +18,6 @@ app.use(express.static(__dirname + '/public'));
 app.disabled('x-powered-by');
 app.set('port', process.env.PORT || 3000);
 
-
-
 app.use('/', routes);
 
 app.get('/favicon.ico', function(req, res) {
