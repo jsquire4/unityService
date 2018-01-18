@@ -6,4 +6,4 @@ var ReportSchema = new Schema({
   formData: String
 });
 
-module.exports = mongoose.model('Report', ReportSchema); 
+module.exports = mongoose.model('Report', ReportSchema);  

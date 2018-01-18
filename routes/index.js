@@ -29,20 +29,43 @@ var ansKey = JSON.parse(fs.readFileSync("./answerKey.json"));
 var nodemailer = require('nodemailer');
 var template = fs.readFileSync("./views/hogan_email_template/email.hjs", "utf-8");
 var compiledTemplate = hogan.compile(template);
+
+// var transporter = nodemailer.createTransport({
+//   service: 'gmail',
+//   auth: {
+//     user: process.env.GMAIL_MAIL,
+//     pass: process.env.GMAIL_PASS
+//   }
+// });
+
+// var mailOptions = {
+//   from:'New England Public Health Training Center <nephtc.noreply@gmail.com>',
+//   to: '',
+//   subject: 'Your Inspection Test Results',
+//   html: compiledTemplate.render({usrAns: ansKey.inspReportJsonList})
+// };  
+
+
 var transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.nephtc.org',
+  port: 25,
+  secure: false,
   auth: {
-    user: process.env.GMAIL_MAIL,
-    pass: process.env.GMAIL_PASS
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS
+  },
+  tls:  {
+    rejectUnauthorized: false
   }
+
 });
 
 var mailOptions = {
-  from:'New England Public Health Training Center <nephtc.noreply@gmail.com>',
+  from: 'New England Public Health Training Center <noreply@nephtc.org>',
   to: '',
   subject: 'Your Inspection Test Results',
-  html: compiledTemplate.render({usrAns: ansKey.inspReportJsonList})
-}; 
+  html: ''
+};
 
 
 // Routes, Post --> post user answers to database, Get:report_id --> see individual report
@@ -50,6 +73,26 @@ var router = express.Router();
 
 router.get('/reports', function(req, res) {
   res.sendStatus(405);
+});
+
+
+router.get('/reports/test-email', function (req, res){
+
+  var usrUrl = "https://arcane-everglades-67955.herokuapp.com/reports/5936c641dc9fde0004f38c79";
+
+  // On callback configure email
+  mailOptions.to = 'jsquire4@bu.edu';
+  mailOptions.html = compiledTemplate.render({email: 'jsquire4@bu.edu', usrUrl: usrUrl}); // mail template located in views/hogan_email_template/email.hjs
+  //mailOptions.html = compiledTemplate.render({email: email, usrUrl: usrUrl, name: name}); // *** Use name when available ***
+
+  // Send
+  transporter.sendMail(mailOptions, function(err, res){
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(res);
+    }      
+  });
 });
 
 /**** POST ****/
@@ -92,7 +135,6 @@ router.post('/reports', function(req, res) {
     }
 
   });
- 
 });
 
 /**** GET:[PARAMS_ID] ****/
@@ -125,36 +167,5 @@ router.patch('/reports/:report_id', function(req, res) {
 router.delete('/reports/:report_id', function(req, res){
   res.sendStatus(405);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = router;

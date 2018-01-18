@@ -4,6 +4,7 @@ var sanitize = require('mongo-sanitize');
 var nodemailer = require('nodemailer');
 var fs = require('fs');
 var handlebars = require('express-handlebars').create({defaultLayout:'main'});
+require('dotenv').config()
 
 var app = express();
 var routes = require('./routes/index');
@@ -22,7 +23,7 @@ app.set('port', process.env.PORT || 3000);
 app.use('/', routes);
 
 app.get('/favicon.ico', function(req, res) {
-    res.send(204);
+    res.sendStatus(204);
 });
 
 app.use(function(req, res, next) {
